@@ -40,7 +40,7 @@ namespace keepr_server.Controllers
         {
             try
             {
-                return Ok(_kserv.GetById(id));
+                return Ok(_kserv.Get(id));
             }
             catch (Exception err)
             {

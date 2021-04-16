@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using keepr_server.Repositories;
+using keepr_server.Services;
 using keeprcoley.Repositories;
 using keeprcoley.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -68,6 +70,8 @@ namespace keepr_server
 
             services.AddTransient<ProfilesService>();
             services.AddTransient<ProfilesRepository>();
+            services.AddTransient<KeepsService>();
+            services.AddTransient<KeepsRepository>();
         }
 
         private IDbConnection CreateDbConnection()

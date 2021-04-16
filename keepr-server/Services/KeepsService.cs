@@ -19,24 +19,37 @@ namespace keepr_server.Services
             return _repo.GetAll();
         }
 
-        internal Keep GetById(int id)
+        internal Keep Get(int id)
         {
-            throw new NotImplementedException();
+            var data = _repo.Get(id);
+            if (data == null)
+            {
+                throw new Exception("Invalid Id Aye");
+            }
+            return data;
         }
 
         internal Keep Create(Keep newKeep)
         {
-            throw new NotImplementedException();
+            newKeep.Id = _repo.Create(newKeep);
+            return newKeep;
         }
 
-        internal object Edit(Keep editData, string id)
+        internal Keep Edit(Keep editData, string userId)
         {
-            throw new NotImplementedException();
+            Keep original = Get(editData.Id);
+            if (original.CreatorId != userId) { throw new Exception("Access Denied: Cannot edit a Keep you did not create, so cut it out"); }
+            editData.Name = editData.Name == null ? original.Name : editData.Name;
+
+            return _repo.Edit(editData);
         }
 
-        internal object Delete(int id1, string id2)
+        internal string Delete(int id, string userId)
         {
-            throw new NotImplementedException();
+            Keep original = Get(id);
+            if (original.CreatorId != userId) { throw new Exception("Access Denied: Cannot Delete a Keep you did not create, get outta here"); }
+            _repo.Remove(id);
+            return "Deleted";
         }
     }
 }

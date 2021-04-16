@@ -10,7 +10,7 @@ namespace keepr_server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    // [Authorize]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         private readonly ProfilesService _ps;
