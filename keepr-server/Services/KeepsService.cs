@@ -49,7 +49,7 @@ namespace keepr_server.Services
             Keep original = Get(id);
             if (original.CreatorId != userId) { throw new Exception("Access Denied: Cannot Delete a Keep you did not create, get outta here"); }
             _repo.Remove(id);
-            return "Deleted";
+            return "Keep deleted";
         }
     }
 }
