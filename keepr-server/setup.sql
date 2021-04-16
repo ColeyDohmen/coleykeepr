@@ -9,7 +9,7 @@ USE bestcoley;
 --   PRIMARY KEY (id)
 -- );
 
--- CREATE TABLE vaults
+-- CREATE TABLE keeps
 -- (
 
 --   id INT NOT NULL AUTO_INCREMENT,
@@ -28,3 +28,5 @@ USE bestcoley;
 --    ON DELETE CASCADE
 
 -- )
+
+-- DROP TABLE vaults;

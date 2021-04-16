@@ -7,26 +7,26 @@ using keeprcoley.Models;
 
 namespace keepr_server.Repositories
 {
-    public class VaultsRepository
+    public class KeepsRepository
     {
         private readonly IDbConnection _db;
 
-        public VaultsRepository(IDbConnection db)
+        public KeepsRepository(IDbConnection db)
         {
             _db = db;
         }
 
-        internal IEnumerable<Vault> GetAll()
+        internal IEnumerable<Keep> GetAll()
         {
             string sql = @"
             SELECT
-            vault.*,
+            keep.*,
             profile.*
-            FROM vaults vault
-            JOIN profiles profile ON vault creatorId = profile.id;";
-            return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) =>
+            FROM keeps keep
+            JOIN profiles profile ON keep creatorId = profile.id;";
+            return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
             {
-                vault.Creator = profile; return vault;
+                keep.Creator = profile; return keep;
             }, splitOn: "id");
         }
     }
