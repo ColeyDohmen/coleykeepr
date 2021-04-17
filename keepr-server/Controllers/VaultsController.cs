@@ -102,5 +102,18 @@ namespace keepr_server.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet("{id}/keeps")]
+        public ActionResult<IEnumerable<VaultKeepViewModel>> GetKeeps(int id)
+        {
+            try
+            {
+                return Ok(_vserv.GetByVaultId(id));
+            }
+            catch (Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
     }
 }

@@ -13,5 +13,11 @@ namespace keepr_server.Models
         public int Shares { get; set; }
         public int Keeps { get; set; }
         public Profile Creator { get; set; }
+
+    }
+
+    public class VaultKeepViewModel : Keep
+    {
+        public int VaultKeepId { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace keepr_server.Repositories
             return _db.ExecuteScalar<int>(sql, newVault);
         }
 
-        internal Vault Get(int id)
+        internal Vault GetById(int id)
         {
             string sql = @"
             SELECT
@@ -64,6 +64,8 @@ namespace keepr_server.Repositories
             string sql = "DELETE FROM vaults WHERE id = @id LIMIT 1";
             _db.Execute(sql, new { id });
         }
+
+
 
         internal Vault Edit(Vault editData)
         {

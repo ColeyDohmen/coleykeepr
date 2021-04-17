@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CodeWorks.Auth0Provider;
 using keepr_server.Models;
 using keepr_server.Services;
+using keeprcoley.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace keepr_server.Controllers
@@ -17,12 +21,16 @@ namespace keepr_server.Controllers
             _vkserv = vkserv;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<VaultKeep>> Get()
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<VaultKeep>> Post([FromBody] VaultKeep newVaultKeep)
         {
             try
             {
-                return Ok(_vkserv.GetAll());
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                newVaultKeep.CreatorId = userInfo.Id;
+                return Ok(_vkserv.Create(newVaultKeep));
+
             }
             catch (Exception err)
             {
@@ -30,5 +38,23 @@ namespace keepr_server.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        [Authorize]
+        public async Task<ActionResult<string>> DeleteAsync(int id)
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                _vkserv.Delete(id, userInfo.Id);
+                return Ok("Deleted");
+
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
+
     }
 }
