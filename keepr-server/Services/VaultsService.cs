@@ -55,6 +55,13 @@ namespace keepr_server.Services
             return "Vault deleted";
         }
 
+        internal IEnumerable<VaultKeepViewModel> GetByProfileId(string id)
+        {
+            IEnumerable<VaultKeepViewModel> vaults = _repo.GetVaultsByProfileId(id);
+            return vaults.ToList();
+        }
+
+
         internal IEnumerable<VaultKeepViewModel> GetByVaultId(int id)
         {
             IEnumerable<VaultKeepViewModel> keeps = _krepo.GetKeepsByVaultId(id);

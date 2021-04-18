@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using keepr_server.Models;
 using keepr_server.Repositories;
 
@@ -42,6 +43,12 @@ namespace keepr_server.Services
             editData.Name = editData.Name == null ? original.Name : editData.Name;
 
             return _repo.Edit(editData);
+        }
+
+        internal IEnumerable<VaultKeepViewModel> GetByProfileId(string id)
+        {
+            IEnumerable<VaultKeepViewModel> keeps = _repo.GetKeepsByProfileId(id);
+            return keeps.ToList();
         }
 
         internal string Delete(int id, string userId)
