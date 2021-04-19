@@ -1,7 +1,11 @@
 <template>
-  <div class="vaultComponent col-12 card">
-    <h5>{{ vProp.name }}</h5>
-    <h5>{{ vProp.description }}</h5>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="vaultComponent col-6 card">
+        <h5>{{ vProp.name }}</h5>
+        <h5>{{ vProp.description }}</h5>
+      </div>
+    </div>
   </div>
 </template>
 

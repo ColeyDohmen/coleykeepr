@@ -32,8 +32,8 @@ namespace keepr_server.Services
 
         internal Keep Create(Keep newKeep)
         {
-            newKeep.Id = _repo.Create(newKeep);
-            return newKeep;
+            return _repo.Create(newKeep);
+
         }
 
         internal Keep Edit(Keep editData, string userId)

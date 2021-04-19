@@ -54,7 +54,7 @@ export default {
       keeps: computed(() => AppState.keeps)
     })
     onMounted(async() => {
-      await vaultsService.getVaults(),
+      await vaultsService.getVaults()
       await keepsService.getKeeps()
     }
     )

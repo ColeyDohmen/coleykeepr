@@ -9,6 +9,24 @@ USE bestcoley;
 --   PRIMARY KEY (id)
 -- );
 
+
+
+-- CREATE TABLE vaults
+-- (
+
+--   id INT NOT NULL AUTO_INCREMENT,
+--   creatorId VARCHAR(255) NOT NULL,
+--   name VARCHAR(255) NOT NULL,
+--   description VARCHAR(255) NOT NULL,
+--   isPrivate TINYINT NOT NULL,
+
+--   PRIMARY KEY (id),
+
+--   FOREIGN KEY (creatorId)
+--    REFERENCES profiles (id)
+--    ON DELETE CASCADE
+-- );
+
 -- CREATE TABLE keeps
 -- (
 
@@ -31,23 +49,7 @@ USE bestcoley;
 -- --    REFERENCES vaults (id)
 -- --    ON DELETE CASCADE
 
--- )
-
--- CREATE TABLE vaults
--- (
-
---   id INT NOT NULL AUTO_INCREMENT,
---   creatorId VARCHAR(255) NOT NULL,
---   name VARCHAR(255) NOT NULL,
---   description VARCHAR(255) NOT NULL,
---   isPrivate TINYINT NOT NULL,
-
---   PRIMARY KEY (id),
-
---   FOREIGN KEY (creatorId)
---    REFERENCES profiles (id)
---    ON DELETE CASCADE
--- )
+-- );
 
 -- CREATE TABLE vaultkeeps
 -- (
@@ -74,3 +76,5 @@ USE bestcoley;
 
 -- DROP TABLE vaults;
 -- DROP TABLE keeps;
+-- DROP TABLE vaultkeeps;
+-- DROP TABLE profiles;

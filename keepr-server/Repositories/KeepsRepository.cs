@@ -32,15 +32,17 @@ namespace keepr_server.Repositories
             }, splitOn: "id");
         }
 
-        internal int Create(Keep newKeep)
+        internal Keep Create(Keep newKeep)
         {
             string sql = @"
             INSERT INTO keeps
             (creatorId, name, description, img, views, shares, keeps)
             VALUES
             (@CreatorId, @Name, @Description, @Img, @Views, @Shares, @Keeps);
-            SELECT LAST_INSERT_ID()";
-            return _db.ExecuteScalar<int>(sql, newKeep);
+            SELECT LAST_INSERT_ID();";
+            int id = _db.ExecuteScalar<int>(sql, newKeep);
+            newKeep.Id = id;
+            return newKeep;
         }
 
         internal Keep Get(int id)

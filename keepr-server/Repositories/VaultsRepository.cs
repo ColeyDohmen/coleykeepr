@@ -39,7 +39,7 @@ namespace keepr_server.Repositories
             (creatorId, name, description, isPrivate)
             VALUES
             (@CreatorId, @Name, @Description, @IsPrivate);
-            SELECT LAST_INSERT_ID()";
+            SELECT LAST_INSERT_ID();";
             return _db.ExecuteScalar<int>(sql, newVault);
         }
 

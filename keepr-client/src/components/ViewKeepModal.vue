@@ -11,7 +11,9 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Keep</h5>
+            <h5 class="modal-title">
+              Keep
+            </h5>
             <button
               type="button"
               class="close"
@@ -30,9 +32,9 @@
                   {{ kProp.description }}
                 </h4>
               </div>
-              <div class="row img-fluid">
+              <div class="row">
                 <div class="col-6">
-                  <img :src="kProp.img" />
+                  <img :src="kProp.img" class="img-fluid" />
                 </div>
               </div>
 

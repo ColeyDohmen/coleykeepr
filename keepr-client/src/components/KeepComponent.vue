@@ -1,4 +1,4 @@
-<template>
+<template class="container-fluid">
   <ViewKeepModal :k-prop="kProp" />
   <div class="keepComponent col-4">
     <div class="row justify-content-center">
