@@ -21,7 +21,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <!-- <div class="modal-body">
             <form @submit.prevent="addKeep">
               <div class="form-group">
                 <input
@@ -43,18 +43,19 @@
                   placeholder="Enter Description..."
                   aria-describedby="helpId"
                   v-model="state.newKeep.description"
-                />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer justify-content-center">
-            <button class="btn btn-primary" type="submit">
-              <i class="fa fa-plus-square" aria-hidden="true"></i>
-            </button>
-          </div>
+                /> -->
+          <!-- </div>
+        </form> -->
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button class="btn btn-primary" type="submit">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </div>
+    <!-- </div>
+  </div> -->
   </div>
 </template>
 

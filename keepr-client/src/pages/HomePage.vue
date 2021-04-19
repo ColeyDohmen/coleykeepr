@@ -11,7 +11,7 @@
     </h1>
     <div class="row">
       <p></p>
-      <!-- <vault-component v-for="v in state.vaults" :key="v.id" :v-prop="v" /> -->
+
       <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
     </div>
   </div>

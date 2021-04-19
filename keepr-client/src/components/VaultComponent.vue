@@ -1,6 +1,7 @@
 <template>
-  <div class="vaultComponent col-3">
-    <h5>hullo</h5>
+  <div class="vaultComponent col-12 card">
+    <h5>{{ vProp.name }}</h5>
+    <h5>{{ vProp.description }}</h5>
   </div>
 </template>
 

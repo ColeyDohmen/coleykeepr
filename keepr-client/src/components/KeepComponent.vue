@@ -1,19 +1,24 @@
 <template>
   <ViewKeepModal :k-prop="kProp" />
-  <div class="keepComponent col-3">
+  <div class="keepComponent col-4">
     <div class="row justify-content-center">
-      <button
-        class="btn btn-primary button-size card-rounded m-1"
-        type="button"
-        :id="'view-keep-' + kProp.id"
-        data-toggle="modal"
-        :data-target="'#view-keep-' + kProp.id"
-      >
-        <i class="fa fa-plus-circle" aria-hidden="true"></i> View Keep
-      </button>
+      <div class="col-5">
+        <h4>{{ kProp.name }}</h4>
+        <button
+          class="btn btn-primary button-size card-rounded m-1"
+          type="button"
+          :id="'view-keep-' + kProp.id"
+          data-toggle="modal"
+          :data-target="'#view-keep-' + kProp.id"
+        >
+          View Keep
+        </button>
+      </div>
     </div>
-    <h5>{{ kProp.name }}</h5>
-    <div class="col card">
+    <div class="col-12 card">
+      <router-link :to="{ name: 'Account' }" class="nav-link">
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+      </router-link>
       <img :src="kProp.img" />
     </div>
   </div>
