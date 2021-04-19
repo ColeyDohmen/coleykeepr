@@ -22,12 +22,12 @@ namespace keepr_server.Services
 
         internal Keep Get(int id)
         {
-            var data = _repo.Get(id);
-            if (data == null)
+            Keep original = _repo.Get(id);
+            if (original == null)
             {
                 throw new Exception("Invalid Id Aye");
             }
-            return data;
+            return original;
         }
 
         internal Keep Create(Keep newKeep)

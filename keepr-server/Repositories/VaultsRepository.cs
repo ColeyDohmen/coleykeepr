@@ -65,19 +65,17 @@ namespace keepr_server.Repositories
             _db.Execute(sql, new { id });
         }
 
-        internal IEnumerable<VaultKeepViewModel> GetVaultsByProfileId(string id)
+        internal IEnumerable<Vault> GetVaultsByProfileId(string id)
         {
             string sql = @"
             SELECT
             vault.*,
-            vk.id AS VaultKeepId,
             pr.*
-            FROM vaultkeeps vk
-            JOIN vaults vault ON vk.vaultId = vault.id
-            JOIN profiles pr ON pr.id = vault.creatorId
-            WHERE vk.vaultId = @id;";
+            FROM vaults vault
+            JOIN profiles pr ON vault.creatorId = pr.id 
+            WHERE vault.creatorId = @id;";
 
-            return _db.Query<VaultKeepViewModel, Profile, VaultKeepViewModel>(sql, (vault, profile) =>
+            return _db.Query<Vault, Profile, Vault>(sql, (vault, profile) =>
             {
                 vault.Creator = profile;
                 return vault;

@@ -19,7 +19,8 @@ namespace keepr_server.Services
 
         internal IEnumerable<Vault> GetAll()
         {
-            return _repo.GetAll();
+            IEnumerable<Vault> vaults = _repo.GetAll();
+            return vaults.ToList().FindAll(v => v.IsPrivate);
         }
 
         internal Vault Get(int id)
@@ -55,10 +56,10 @@ namespace keepr_server.Services
             return "Vault deleted";
         }
 
-        internal IEnumerable<VaultKeepViewModel> GetByProfileId(string id)
+        internal IEnumerable<Vault> GetByProfileId(string id)
         {
-            IEnumerable<VaultKeepViewModel> vaults = _repo.GetVaultsByProfileId(id);
-            return vaults.ToList();
+            IEnumerable<Vault> vaults = _repo.GetVaultsByProfileId(id);
+            return vaults.ToList().FindAll(v => v.IsPrivate);
         }
 
 

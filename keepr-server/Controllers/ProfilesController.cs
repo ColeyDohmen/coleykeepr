@@ -51,7 +51,7 @@ namespace keepr_server.Controllers
         }
 
         [HttpGet("{id}/vaults")]
-        public ActionResult<IEnumerable<VaultKeepViewModel>> GetVaults(string id)
+        public ActionResult<IEnumerable<Vault>> GetVaults(string id)
         {
             try
             {

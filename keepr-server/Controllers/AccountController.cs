@@ -36,13 +36,13 @@ namespace keepr_server.Controllers
         }
 
 
-        // [HttpGet("reviews")]
-        // public async Task<ActionResult<IEnumerable<Review>>> GetReviewsByAccountId()
+        // [HttpGet("vaults")]
+        // public async Task<ActionResult<IEnumerable<Vault>>> GetVaultsByAccountId()
         // {
         //     try
         //     {
         //         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-        //         return Ok(_reviewserv.GetReviewsByAccountId(userInfo.Id));
+        //         return Ok(_serv.GetReviewsByAccountId(userInfo.Id));
         //     }
         //     catch (Exception e)
         //     {
