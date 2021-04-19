@@ -6,18 +6,27 @@
     <div class="col-8 mx-3 py-3">
       <h2>Vaults:</h2>
 
-      <i class="fa fa-plus btn-outline-success"></i>
+      <button
+        class="btn btn-outline-primary button-size card-rounded m-1"
+        type="button"
+        :id="addvault"
+        data-toggle="modal"
+        data-target="#addvault"
+      >
+        <i class="fa fa-plus btn-outline-success" aria-hidden="true"></i> Add
+        Vault
+      </button>
       <vault-component v-for="v in state.vaults" :key="v.id" :v-prop="v" />
     </div>
     <div class="row">
       <div class="col-8 mx-3 py-3">
         <h2>Keeps:</h2>
         <button
-          class="btn btn-primary button-size card-rounded m-1"
+          class="btn btn-outline-primary button-size card-rounded m-1"
           type="button"
-          :id="addKeep"
+          :id="addkeep"
           data-toggle="modal"
-          data-target="#add-keep"
+          data-target="#addkeep"
         >
           <i class="fa fa-plus btn-outline-success" aria-hidden="true"></i> Add
           Keep
@@ -44,8 +53,10 @@ export default {
       vaults: computed(() => AppState.vaults),
       keeps: computed(() => AppState.keeps)
     })
-    onMounted(() => vaultsService.getVaults(),
-      keepsService.getKeeps()
+    onMounted(async() => {
+      await vaultsService.getVaults(),
+      await keepsService.getKeeps()
+    }
     )
     return {
       account: computed(() => AppState.account),
