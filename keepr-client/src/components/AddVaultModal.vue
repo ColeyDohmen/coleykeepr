@@ -23,8 +23,8 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!-- <div class="modal-body"> -->
-          <!-- <form @submit.prevent="addVault">
+          <div class="modal-body">
+            <form @submit.prevent="addVault">
               <div class="form-group">
                 <input
                   type="text"
@@ -47,12 +47,12 @@
                   v-model="state.newVault.description"
                 />
               </div>
-            </form> -->
-          <!-- </div> -->
+              <button class="btn btn-primary" type="submit">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
           <div class="modal-footer justify-content-center">
-            <button class="btn btn-primary" type="submit">
-              <i class="fa fa-plus-square" aria-hidden="true"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -81,9 +81,8 @@ export default {
       route,
       async addVault() {
         try {
-          $('#addvault').modal('hide')
+          $('#add-vault').modal('hide')
           state.newVault.creator = state.user
-          // state.newMaintenance.creatorId = state.user._id
           state.newVault.creatorId = route.params.id
           logger.log(state.newVault)
           await vaultsService.createVault(state.newVault)

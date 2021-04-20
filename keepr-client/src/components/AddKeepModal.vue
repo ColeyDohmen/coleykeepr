@@ -11,7 +11,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add Keep</h5>
+            <h5 class="modal-title">
+              Add Keep
+            </h5>
             <button
               type="button"
               class="close"
@@ -21,7 +23,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!-- <div class="modal-body">
+          <div class="modal-body">
             <form @submit.prevent="addKeep">
               <div class="form-group">
                 <input
@@ -36,26 +38,25 @@
               </div>
               <div class="form-group">
                 <input
-                  type="date"
-                  name="DOS"
-                  id="DOS"
+                  type="text"
+                  name="description"
+                  id="description"
                   class="form-control"
                   placeholder="Enter Description..."
                   aria-describedby="helpId"
                   v-model="state.newKeep.description"
-                /> -->
-          <!-- </div>
-        </form> -->
-        </div>
-        <div class="modal-footer justify-content-center">
-          <button class="btn btn-primary" type="submit">
-            <i class="fa fa-plus-square" aria-hidden="true"></i>
-          </button>
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button class="btn btn-primary" type="submit">
+              <i class="fa fa-plus-square" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <!-- </div>
-  </div> -->
   </div>
 </template>
 
@@ -71,17 +72,17 @@ export default {
   setup() {
     const state = reactive({
       user: computed(() => AppState.user),
-      activeKeep: computed(() => AppState.activeKeep)
+      activeKeep: computed(() => AppState.activeKeep),
+      newKeep: {}
     })
     const route = useRoute()
     return {
       state,
-      route,
       async addKeep() {
         try {
           $('#add-keep').modal('hide')
+          state.newKeep.keeps = state.keeps
           state.newKeep.creator = state.user
-          // state.newMaintenance.creatorId = state.user._id
           state.newKeep.creatorId = route.params.id
           logger.log(state.newKeep)
           await keepsService.createKeep(state.newKeep)

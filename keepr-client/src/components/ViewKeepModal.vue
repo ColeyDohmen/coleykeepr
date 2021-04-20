@@ -39,7 +39,7 @@
               </div>
 
               <div class="col-12">
-                <button class="btn btn-danger" @click="AddtoVault">
+                <button class="btn btn-danger" @click="addToVault">
                   Add to vault
                 </button>
               </div>
@@ -54,6 +54,10 @@
 <script>
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
+import { useRoute } from 'vue-router'
+import { logger } from '../utils/Logger'
+import $ from 'jquery'
+import { keepsService } from '../services/KeepsService'
 export default {
   name: 'ViewKeepModal',
   props: {
@@ -62,13 +66,24 @@ export default {
   setup(props) {
     const state = reactive({
       record: computed(() => AppState.activeKeeps),
-      active: { index: 0 },
-      imageData: {},
-      path: 'recordsImages',
-      files: []
+      newKeep: {}
     })
+    const route = useRoute()
     return {
-      state
+      state,
+      route,
+      async addToVault() {
+        try {
+          $('#add-keep').modal('hide')
+          state.newKeep.creator = state.user
+          state.newKeep.vaultId = route.params.id
+          logger.log(state.newKeep)
+          await keepsService.createKeep(state.newkeep)
+          state.newKeep = {}
+        } catch (error) {
+          logger.log(error)
+        }
+      }
     }
   },
   components: {}

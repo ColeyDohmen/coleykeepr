@@ -24,8 +24,29 @@ class VaultsService {
   }
 
   async createVault(vault) {
-    await api.post('api/vaults', vault)
-    this.getVaults()
+    const res = await api.post('api/vaults', vault)
+    AppState.vaults.push(res.data)
+    return res.data.id
+    // this.getVaults()
+  }
+
+  async deleteVault(id) {
+    await api.delete(`api/vaults/${id}`)
+  }
+
+  async getAllKeepsByVaultId(id) {
+    try {
+      const res = await api.get(`api/vaults/${id}/keeps`)
+      AppState.keeps = res.data
+    } catch (error) {
+      logger.log(error)
+    }
+  }
+
+  async getVaultsByProfileId(id) {
+    const res = await api.get('api/profiles/' + id + '/vaults')
+    logger.log(res)
+    AppState.vaults = res.data
   }
 }
 

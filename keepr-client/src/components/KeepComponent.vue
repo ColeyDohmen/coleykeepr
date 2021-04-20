@@ -3,23 +3,26 @@
   <div class="keepComponent col-4">
     <div class="row justify-content-center">
       <div class="col-5">
-        <h4>{{ kProp.name }}</h4>
-        <button
-          class="btn btn-primary button-size card-rounded m-1"
-          type="button"
-          :id="'view-keep-' + kProp.id"
-          data-toggle="modal"
-          :data-target="'#view-keep-' + kProp.id"
-        >
-          View Keep
-        </button>
       </div>
     </div>
     <div class="col-12 card">
-      <router-link :to="{ name: 'Account' }" class="nav-link">
-        <i class="fa fa-user-circle" aria-hidden="true"></i>
-      </router-link>
-      <img :src="kProp.img" />
+      <div class="containera">
+        <router-link :to="{ name: 'ProfilePage', params: { id: kProp.creatorId } }" class="nav-link">
+          <i class="fa fa-user-circle bottom-right" aria-hidden="true"></i>
+        </router-link>
+        <img :src="kProp.img" alt="kpropimg" style="width:100%" />
+        <h4 class="bottom-left">
+          <div
+            class="primary button-size card-rounded m-1"
+            type="submit"
+            :id="'view-keep-' + kProp.id"
+            data-toggle="modal"
+            :data-target="'#view-keep-' + kProp.id"
+          >
+            {{ kProp.name }}
+          </div>
+        </h4>
+      </div>
     </div>
   </div>
 </template>
@@ -45,4 +48,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.containera {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
 </style>
