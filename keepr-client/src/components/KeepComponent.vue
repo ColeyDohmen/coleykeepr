@@ -1,6 +1,6 @@
 <template class="bg-primary justify-content-center">
   <ViewKeepModal :k-prop="kProp" />
-  <div class="keepComponent bg-primary">
+  <div class="keepComponent bg-primary rounded">
     <div class="justify-content-center">
       <div class="">
       </div>

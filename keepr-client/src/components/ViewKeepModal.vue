@@ -25,21 +25,20 @@
           </div>
           <div class="modal-body">
             <div class="row text-center">
-              <div class="col-12 text-center">
+              <div class="col-6 text-center align-self-center">
                 <h2>{{ kProp.name }}</h2>
 
                 <h4>
                   {{ kProp.description }}
                 </h4>
               </div>
-              <div class="row">
-                <div class="col-6">
-                  <img :src="kProp.img" class="img-fluid" />
-                </div>
+
+              <div class="col-6">
+                <img :src="kProp.img" class="img-fluid" />
               </div>
 
-              <div class="col-12">
-                <button class="btn btn-danger" @click="addToVault">
+              <div class="col-12 p-1">
+                <button class="btn btn-primary" @click="addToVault">
                   Add to vault
                 </button>
               </div>

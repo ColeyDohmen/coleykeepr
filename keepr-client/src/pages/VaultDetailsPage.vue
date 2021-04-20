@@ -1,5 +1,7 @@
 <template>
-  <div class="vaultPage container-fluid"></div>
+  <div class="vaultPage container-fluid">
+    {{ state.vault.name }}
+  </div>
 </template>
 
 <script>
@@ -9,6 +11,7 @@ import { vaultsService } from '../services/VaultsService'
 import { useRoute } from 'vue-router'
 export default {
   name: 'VaultPage',
+
   setup() {
     const route = useRoute()
     const state = reactive({

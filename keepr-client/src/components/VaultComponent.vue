@@ -1,9 +1,11 @@
 <template>
-  <div class="container-fluid">
+  <div class="col-12 p-1">
     <div class="row">
-      <div class="vaultComponent col-6 card">
-        <h5>{{ vProp.name }}</h5>
-        <h5>{{ vProp.description }}</h5>
+      <div class="vaultComponent col-6 card rounded">
+        <router-link :to="{ name: 'VaultDetailsPage', params: { id: vProp.id } }" class="nav-link">
+          <h5>{{ vProp.name }}</h5>
+          <h5>{{ vProp.description }}</h5>
+        </router-link>
       </div>
     </div>
   </div>
