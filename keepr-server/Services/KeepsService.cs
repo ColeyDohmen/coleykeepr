@@ -45,10 +45,10 @@ namespace keepr_server.Services
             return _repo.Edit(editData);
         }
 
-        internal IEnumerable<VaultKeepViewModel> GetByProfileId(string id)
+        internal IEnumerable<Keep> GetByProfileId(string id)
         {
-            IEnumerable<VaultKeepViewModel> keeps = _repo.GetKeepsByProfileId(id);
-            return keeps.ToList();
+            IEnumerable<Keep> keeps = _repo.GetKeepsByProfileId(id);
+            return keeps;
         }
 
         internal string Delete(int id, string userId)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using keepr_server.Models;
 using keepr_server.Repositories;
+using keeprcoley.Models;
 
 namespace keepr_server.Services
 {
@@ -23,12 +24,16 @@ namespace keepr_server.Services
             return vaults.ToList().FindAll(v => v.IsPrivate);
         }
 
-        internal Vault Get(int id)
+        internal Vault Get(int id, Profile userInfo)
         {
             var data = _repo.GetById(id);
             if (data == null)
             {
                 throw new Exception("Invalid Id Aye");
+            }
+            if (data.IsPrivate == true && data.CreatorId != userInfo?.Id)
+            {
+                throw new Exception("Get outta here, this is private");
             }
             return data;
         }
@@ -48,6 +53,20 @@ namespace keepr_server.Services
             return _repo.Edit(editData);
         }
 
+        private Vault Get(int id)
+        {
+            var data = _repo.GetById(id);
+            if (data == null)
+            {
+                throw new Exception("Invalid Id Aye");
+            }
+            if (data.IsPrivate == true)
+            {
+                throw new Exception("Get outta here, this is private");
+            }
+            return data;
+        }
+
         internal string Delete(int id, string userId)
         {
             Vault original = Get(id);
@@ -63,8 +82,13 @@ namespace keepr_server.Services
         }
 
 
-        internal IEnumerable<VaultKeepViewModel> GetByVaultId(int id)
+        internal IEnumerable<VaultKeepViewModel> GetByVaultId(int id, Profile userInfo)
         {
+            var data = _repo.GetById(id);
+            if (data.IsPrivate == true && data.CreatorId != userInfo?.Id)
+            {
+                throw new Exception("Get outta here, this is private");
+            }
             IEnumerable<VaultKeepViewModel> keeps = _krepo.GetKeepsByVaultId(id);
             return keeps.ToList();
         }
