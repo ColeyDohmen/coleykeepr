@@ -1,11 +1,11 @@
-<template class="container-fluid">
+<template class="bg-primary justify-content-center">
   <ViewKeepModal :k-prop="kProp" />
-  <div class="keepComponent col-4">
-    <div class="row justify-content-center">
-      <div class="col-5">
+  <div class="keepComponent bg-primary">
+    <div class="justify-content-center">
+      <div class="">
       </div>
     </div>
-    <div class="col-12 card">
+    <div class="col-6 card">
       <div class="containera">
         <router-link :to="{ name: 'ProfilePage', params: { id: kProp.creatorId } }" class="nav-link">
           <i class="fa fa-user-circle bottom-right" aria-hidden="true"></i>

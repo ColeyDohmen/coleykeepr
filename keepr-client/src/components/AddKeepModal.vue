@@ -47,12 +47,23 @@
                   v-model="state.newKeep.description"
                 />
               </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="img"
+                  id="img"
+                  class="form-control"
+                  placeholder="Enter img url..."
+                  aria-describedby="helpId"
+                  v-model="state.newKeep.img"
+                />
+              </div>
+              <button class="btn btn-primary" type="submit">
+                <i class="fa fa-plus-square" aria-hidden="true"></i>
+              </button>
             </form>
           </div>
           <div class="modal-footer justify-content-center">
-            <button class="btn btn-primary" type="submit">
-              <i class="fa fa-plus-square" aria-hidden="true"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -80,7 +91,7 @@ export default {
       state,
       async addKeep() {
         try {
-          $('#add-keep').modal('hide')
+          $('#addkeep').modal('hide')
           state.newKeep.keeps = state.keeps
           state.newKeep.creator = state.user
           state.newKeep.creatorId = route.params.id

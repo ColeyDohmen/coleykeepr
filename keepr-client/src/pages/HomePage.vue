@@ -10,9 +10,9 @@
       <span class="mx-2 text-white">Keeps</span>
     </h1>
     <div class="row">
-      <p></p>
-
-      <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
+      <div class="col-4 mt-2 p-2" v-for="k in state.keeps" :key="k.id">
+        <keep-component :k-prop="k" />
+      </div>
     </div>
   </div>
 </template>

@@ -78,10 +78,10 @@ export default {
     const route = useRoute()
     return {
       state,
-      route,
       async addVault() {
         try {
-          $('#add-vault').modal('hide')
+          $('#addvault').modal('hide')
+          state.newVault.vaults = state.vaults
           state.newVault.creator = state.user
           state.newVault.creatorId = route.params.id
           logger.log(state.newVault)
