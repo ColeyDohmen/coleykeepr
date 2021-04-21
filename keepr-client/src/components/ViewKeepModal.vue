@@ -38,15 +38,29 @@
               </div>
 
               <div class="col-12 p-1">
-                <button class="btn btn-primary" @click="addToVault">
+                <!-- <button class="btn btn-primary" @click="addToVault">
                   Add to vault
-                </button>
+                </button> -->
+                <!-- Example single danger button -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary btn-md dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add to vault
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </div>
                 <button
-                  class="btn btn-danger button p-1 mx-2"
+                  class="btn btn-danger btn-sm button p-1 mx-2"
+                  @click="deleteKeep"
                 >
                   <i
                     class="fa fa-minus-square pam-size text-light mt-2 mb-2"
-                    @click="deleteKeep"
+
                     aria-hidden="true"
                   ></i>
                 </button>
@@ -66,6 +80,7 @@ import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import $ from 'jquery'
 import { keepsService } from '../services/KeepsService'
+import NotificationsService from '../services/NotificationsService'
 export default {
   name: 'ViewKeepModal',
   props: {
@@ -80,14 +95,24 @@ export default {
     return {
       state,
       route,
+      props,
       async addToVault() {
         try {
           $('#add-keep').modal('hide')
           state.newKeep.creator = state.user
-          state.newKeep.vaultId = route.params.id
+          state.newKeep.keepId = route.params.id
           logger.log(state.newKeep)
           await keepsService.createKeep(state.newkeep)
           state.newKeep = {}
+        } catch (error) {
+          logger.log(error)
+        }
+      },
+      async deleteKeep() {
+        try {
+          if (await NotificationsService.confirmAction()) {
+            await keepsService.deleteKeep(props.kProp.id)
+          }
         } catch (error) {
           logger.log(error)
         }

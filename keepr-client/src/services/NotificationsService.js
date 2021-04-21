@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2'
+import { logger } from '../utils/Logger'
 
 export default class NotificationService {
   static async confirmAction(title = 'Are you sure?', text = "You won't be able to revert this!") {
@@ -12,13 +13,18 @@ export default class NotificationService {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       })
-      console.log(res)
+      logger.log(res)
       if (res.isConfirmed) {
+        Swal.fire(
+          'Delete!',
+          'Your file has been deleted.',
+          'success'
+        )
         return true
       }
       return false
     } catch (error) {
-      console.error(error)
+      logger.error(error)
     }
   }
 

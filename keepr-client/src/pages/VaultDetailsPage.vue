@@ -26,10 +26,16 @@ import { vaultsService } from '../services/VaultsService'
 import { useRoute } from 'vue-router'
 import NotificationsService from '../services/NotificationsService'
 import { logger } from '../utils/Logger'
+import router from '../router'
 export default {
   name: 'VaultPage',
-
-  setup() {
+  props: {
+    vProp: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
     const route = useRoute()
     const state = reactive({
       vault: computed(() => AppState.activeVault)
@@ -39,10 +45,12 @@ export default {
     })
     return {
       state,
+      props,
       async deleteVault() {
         try {
           if (await NotificationsService.confirmAction()) {
             await vaultsService.deleteVault(route.params.id)
+            router.push({ name: 'Home' })
           }
         } catch (error) {
           logger.log(error)
