@@ -58,5 +58,10 @@ namespace keepr_server.Services
             _repo.Remove(id);
             return "Keep deleted";
         }
+
+        internal IEnumerable<Keep> GetKeepsByAccountId(string id)
+        {
+            return _repo.GetByCreatorId(id);
+        }
     }
 }

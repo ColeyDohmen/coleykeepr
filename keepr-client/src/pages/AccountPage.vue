@@ -63,8 +63,8 @@ export default {
     })
     // const route = useRoute()
     onMounted(async() => {
-      await vaultsService.getVaults()
-      await keepsService.getKeeps()
+      await vaultsService.getVaultsByAccountId()
+      await keepsService.getKeepsByAccountId()
       // await keepsService.getKeep(route.params.id)
     }
     )

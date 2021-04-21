@@ -53,6 +53,11 @@ namespace keepr_server.Services
             return _repo.Edit(editData);
         }
 
+        internal IEnumerable<Vault> GetVaultsByAccountId(string id)
+        {
+            return _repo.GetByCreatorId(id);
+        }
+
         private Vault Get(int id)
         {
             var data = _repo.GetById(id);

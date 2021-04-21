@@ -78,6 +78,23 @@ namespace keepr_server.Repositories
             }, new { id }, splitOn: "id");
         }
 
+        internal IEnumerable<Keep> GetByCreatorId(string id)
+        {
+            string sql = @"
+            SELECT
+            keep.*,
+            pr.*
+            FROM keeps keep
+            JOIN profiles pr ON pr.id = keep.creatorId
+            WHERE keep.creatorId = @id;";
+
+            return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
+            {
+                keep.Creator = profile;
+                return keep;
+            }, new { id }, splitOn: "id");
+        }
+
         internal Keep Edit(Keep editData)
         {
             string sql = @"

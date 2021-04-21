@@ -34,6 +34,12 @@ class KeepsService {
     AppState.keeps = res.data
   }
 
+  async getKeepsByAccountId() {
+    const res = await api.get('account/keeps')
+    logger.log(res)
+    AppState.keeps = res.data
+  }
+
   async deleteKeep(id) {
     await api.delete(`api/keeps/${id}`)
   }
