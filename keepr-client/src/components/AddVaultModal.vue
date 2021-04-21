@@ -47,9 +47,15 @@
                   v-model="state.newVault.description"
                 />
               </div>
-              <button class="btn btn-primary" type="submit">
-                <i class="fa fa-plus-square" aria-hidden="true"></i>
-              </button>
+              <div class="row p-1">
+                Make private?
+                <input class="mx-2 my-2" type="checkbox" v-model="state.newVault.isPrivate">
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer justify-content-center">
