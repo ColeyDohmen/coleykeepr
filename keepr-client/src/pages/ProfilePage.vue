@@ -9,6 +9,7 @@
     <div class="row">
       <div class="col-12 text-center" v-if="state.vaults != undefined">
         <h2>Vaults:</h2>
+        <p>{{ state.vaults[i] }}</p>
         <button
           class="btn btn-outline-primary button-size card-rounded m-1"
           type="button"

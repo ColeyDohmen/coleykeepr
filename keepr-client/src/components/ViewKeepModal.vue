@@ -54,16 +54,19 @@
                     <a class="dropdown-item" href="#">Separated link</a>
                   </div>
                 </div>
-                <button
-                  class="btn btn-danger btn-sm button p-1 mx-2"
-                  @click="deleteKeep"
-                >
-                  <i
-                    class="fa fa-minus-square pam-size text-light mt-2 mb-2"
+                <div v-if="state.keeps != undefined">
+                  <button
+                    class="btn btn-danger btn-sm button p-1 mx-2"
+                    @click="deleteKeep"
+                    v-if="state.profile.email === state.user.email"
+                  >
+                    <i
+                      class="fa fa-minus-square pam-size text-light mt-2 mb-2"
 
-                    aria-hidden="true"
-                  ></i>
-                </button>
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -88,7 +91,10 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      record: computed(() => AppState.activeKeeps),
+      activeKeep: computed(() => AppState.activeKeeps),
+      user: computed(() => AppState.user),
+      profile: computed(() => AppState.profile),
+      keeps: computed(() => AppState.keeps),
       newKeep: {}
     })
     const route = useRoute()

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="nav navbar navbar-expand-lg navbar-dark ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <!-- <img alt="logo" src="../assets/img/cw-logo.png" height="45" /> -->
@@ -111,6 +111,9 @@ export default {
   display: block;
   transform: scale(0);
   transition: all 0.15s linear;
+}
+.nav{
+background: #36df69;
 }
 .dropdown-menu.show {
   transform: scale(1);
