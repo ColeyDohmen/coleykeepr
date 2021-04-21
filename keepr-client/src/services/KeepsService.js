@@ -40,6 +40,12 @@ class KeepsService {
     AppState.keeps = res.data
   }
 
+  async getKeepsByVaultId(id) {
+    const res = await api.get('api/vaults/' + id + '/keeps')
+    logger.log(res)
+    AppState.keeps = res.data
+  }
+
   async deleteKeep(id) {
     await api.delete(`api/keeps/${id}`)
   }

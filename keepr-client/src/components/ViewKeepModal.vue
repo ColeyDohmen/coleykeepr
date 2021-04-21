@@ -48,7 +48,12 @@
                   </button>
 
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
+                    <div @click="addKeepToVault" v-for="v in state.vaults" :key="v.id" :v-prop="v">
+                      {{ v.name }}
+                    </div>
+                    <button class="btn dropdown-item" href="#" type="button">
+                      {{ kProp.creator.email }}
+                    </button>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                     <div class="dropdown-divider"></div>
@@ -91,7 +96,8 @@ import NotificationsService from '../services/NotificationsService'
 export default {
   name: 'ViewKeepModal',
   props: {
-    kProp: { type: Object, required: true }
+    kProp: { type: Object, required: true },
+    vProp: { type: Object, required: true }
   },
   setup(props) {
     const state = reactive({
@@ -99,6 +105,7 @@ export default {
       user: computed(() => AppState.user),
       profile: computed(() => AppState.profile),
       keeps: computed(() => AppState.keeps),
+      vaults: computed(() => AppState.vaults),
       newKeep: {}
     })
     const route = useRoute()
@@ -126,6 +133,9 @@ export default {
         } catch (error) {
           logger.log(error)
         }
+      },
+      async addKeeptoVault() {
+
       }
     }
   },

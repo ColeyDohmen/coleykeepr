@@ -1,6 +1,7 @@
 <template>
   <div class="vaultPage container-fluid">
     <h2>{{ state.vault.name }}</h2>
+    <h3>{{ state.vault.description }}</h3>
     <div class="row">
       <div class="col-4" v-if="state.vault != undefined">
         <button
@@ -15,6 +16,7 @@
           ></i>
         </button>
       </div>
+      <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
     </div>
   </div>
 </template>
@@ -27,6 +29,7 @@ import { useRoute } from 'vue-router'
 import NotificationsService from '../services/NotificationsService'
 import { logger } from '../utils/Logger'
 import router from '../router'
+import { keepsService } from '../services/KeepsService'
 export default {
   name: 'VaultPage',
   props: {
@@ -44,6 +47,7 @@ export default {
     })
     onMounted(() => {
       vaultsService.getVault(route.params.id)
+      keepsService.getKeepsByVaultId(route.params.id)
     })
     return {
       state,

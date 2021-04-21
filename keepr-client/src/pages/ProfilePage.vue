@@ -8,8 +8,7 @@
     </div>
     <div class="row">
       <div class="col-12 text-center" v-if="state.vaults != undefined">
-        <h2>Vaults:</h2>
-        <p>{{ state.vaults[i] }}</p>
+        <h2>Vaults: {{ state.vaults.length }}</h2>
         <button
           class="btn btn-outline-primary button-size card-rounded m-1"
           type="button"
@@ -27,7 +26,7 @@
     </div>
     <div class="row">
       <div class="col-8 mx-3 py-3" v-if="state.keeps != undefined">
-        <h2>Keeps:</h2>
+        <h2>Keeps: {{ state.keeps.length }}</h2>
         <button
           class="btn btn-outline-primary button-size card-rounded m-1"
           type="button"
