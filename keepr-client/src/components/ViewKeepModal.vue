@@ -41,6 +41,15 @@
                 <button class="btn btn-primary" @click="addToVault">
                   Add to vault
                 </button>
+                <button
+                  class="btn btn-danger button p-1 mx-2"
+                >
+                  <i
+                    class="fa fa-minus-square pam-size text-light mt-2 mb-2"
+                    @click="deleteKeep"
+                    aria-hidden="true"
+                  ></i>
+                </button>
               </div>
             </div>
           </div>

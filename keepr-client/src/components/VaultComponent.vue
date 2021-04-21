@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 p-1">
+  <div class="col-12 p-2">
     <div class="row">
       <div class="vaultComponent col-6 card rounded">
         <router-link :to="{ name: 'VaultDetailsPage', params: { id: vProp.id } }" class="nav-link">
@@ -13,6 +13,10 @@
 
 <script>
 import { reactive } from 'vue'
+// import { logger } from '../utils/Logger'
+// import { vaultsService } from '../services/VaultsService'
+// import { useRoute } from 'vue-router'
+
 export default {
   name: 'VaultComponent',
   props: {
@@ -22,10 +26,15 @@ export default {
     }
   },
   setup() {
+    // const Swal = require('sweetalert2')
+    // const route = useRoute()
     const state = reactive({
 
     })
-    return { state }
+    return {
+      state
+
+    }
   },
   components: {}
 }

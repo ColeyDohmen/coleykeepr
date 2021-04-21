@@ -5,7 +5,7 @@
       <div class="">
       </div>
     </div>
-    <div class="col-6 card">
+    <div class="col-6 card ">
       <div class="containera">
         <router-link :to="{ name: 'ProfilePage', params: { id: kProp.creatorId } }" class="nav-link">
           <i class="fa fa-user-circle bottom-right" aria-hidden="true"></i>
