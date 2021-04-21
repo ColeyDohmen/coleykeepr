@@ -46,6 +46,7 @@
                   <button type="button" class="btn btn-primary btn-md dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Add to vault
                   </button>
+
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
@@ -54,11 +55,14 @@
                     <a class="dropdown-item" href="#">Separated link</a>
                   </div>
                 </div>
+                <h5>
+                  {{ kProp.creator.email }}
+                </h5>
                 <div v-if="state.keeps != undefined">
                   <button
                     class="btn btn-danger btn-sm button p-1 mx-2"
                     @click="deleteKeep"
-                    v-if="state.profile.email === state.user.email"
+                    v-if="kProp.creator.email === state.user.email"
                   >
                     <i
                       class="fa fa-minus-square pam-size text-light mt-2 mb-2"
