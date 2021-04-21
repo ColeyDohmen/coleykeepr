@@ -48,14 +48,11 @@
                   </button>
 
                   <div class="dropdown-menu">
-                    <div @click="addKeepToVault" v-for="v in state.vaults" :key="v.id" :v-prop="v">
+                    <div @click="addKeepToVault(v.id)" class="dropdown-item" v-for="v in state.vaults" :key="v.id" :v-prop="v">
                       {{ v.name }}
                     </div>
                     <button class="btn dropdown-item" href="#" type="button">
-                      {{ kProp.creator.email }}
                     </button>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Separated link</a>
                   </div>
@@ -106,7 +103,8 @@ export default {
       profile: computed(() => AppState.profile),
       keeps: computed(() => AppState.keeps),
       vaults: computed(() => AppState.vaults),
-      newKeep: {}
+      newKeep: {},
+      newVaultKeep: {}
     })
     const route = useRoute()
     return {
@@ -134,8 +132,16 @@ export default {
           logger.log(error)
         }
       },
-      async addKeeptoVault() {
-
+      addKeeptoVault(vaultId) {
+        try {
+          logger.log(state.newKeep)
+          const vaultKeep = { vaultId: vaultId, keepId: props.kProp.id }
+          state.newKeep.vaultId = props.vProp.id
+          keepsService.createVaultKeep(state.newVaultKeep)
+          state.newKeep = {}
+        } catch (error) {
+          logger.log(error)
+        }
       }
     }
   },

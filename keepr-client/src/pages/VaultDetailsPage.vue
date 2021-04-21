@@ -17,6 +17,7 @@
         </button>
       </div>
       <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
+      {{ state.keeps.name }}
     </div>
   </div>
 </template>
@@ -43,7 +44,8 @@ export default {
     const state = reactive({
       vault: computed(() => AppState.activeVault),
       user: computed(() => AppState.user),
-      profile: computed(() => AppState.profile)
+      profile: computed(() => AppState.profile),
+      keeps: computed(() => AppState.keeps)
     })
     onMounted(() => {
       vaultsService.getVault(route.params.id)
