@@ -12,7 +12,6 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">
-              Keep
             </h5>
             <button
               type="button"
@@ -26,28 +25,19 @@
           <div class="modal-body">
             <div class="row text-center">
               <div class="col-6 text-center align-self-center">
-                <h2>{{ kProp.name }}</h2>
+                <h2>
+                  {{ kProp.name }}
+                </h2>
 
-                <h4>
+                <h4 class="mb-5">
                   {{ kProp.description }}
                 </h4>
-              </div>
-
-              <div class="col-6">
-                <img :src="kProp.img" class="img-fluid rounded" />
-              </div>
-
-              <div class="col-7 p-1">
-                <!-- <button class="btn btn-primary" @click="addToVault">
-                  Add to vault
-                </button> -->
-                <!-- Example single danger button -->
-                <div class="btn-group">
-                  <button type="button" class="btn btn-primary btn-md dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="btn-group mt-5">
+                  <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Add to vault
                   </button>
 
-                  <div class="dropdown-menu">
+                  <div class="dropdown-menu ">
                     <div @click="addKeepToVault(v.id)" class="dropdown-item" v-for="v in state.vaults" :key="v.id" :v-prop="v">
                       {{ v.name }}
                     </div>
@@ -70,7 +60,14 @@
                   <h5 class="float-right mx-2 p-2">
                     {{ kProp.creator.email }}
                   </h5>
+                  <div class="div">
+                    <img class="rounded img-fluid " :src="kProp.creator.picture" alt="" />
+                  </div>
                 </div>
+              </div>
+
+              <div class="col-6 ">
+                <img :src="kProp.img" class="img-fluid rounded float-right" />
               </div>
             </div>
           </div>
@@ -146,3 +143,9 @@ export default {
   components: {}
 }
 </script>
+<style>
+.words {
+  position: absolute;
+  bottom: 10px;
+}
+</style>
