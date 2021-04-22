@@ -1,19 +1,13 @@
-<template>
-  <div
-    class="home d-flex flex-column align-items-center masonry-with-columns body"
-  >
-    <!-- <img
-      src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-      alt="CodeWorks Logo"
-    /> -->
-    <h1 class="my-5 text-light p-3 rounded d-flex align-items-center">
+<template class="container-fluid">
+  <!-- <div class="row">
+    <h1 class="my-5 text-light p-3 rounded col-12 align-items-center">
       <span class="mx-2 text-primary">K e e p s</span>
     </h1>
-    <div class="row">
-      <div class="col-4 mt-2 p-2" v-for="k in state.keeps" :key="k.id">
-        <keep-component :k-prop="k" />
-      </div>
-    </div>
+  </div> -->
+  <div
+    class="card-columns mx-2 my-2"
+  >
+    <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
   </div>
 </template>
 
@@ -47,10 +41,20 @@ export default {
   }
 }
 
-body {
-  margin: 0;
-  padding: 1rem;
-}
+// body {
+//   margin: 0;
+//   padding: 1rem;
+// }
+
+// .card-columns {
+//   @include media-breakpoint-only(lg) {
+//     column-count: 4;
+//   }
+
+//   @include media-breakpoint-only(xl) {
+//     column-count: 5;
+//   }
+// }
 
 // .masonry-with-columns {
 //   columns: 6 200px;

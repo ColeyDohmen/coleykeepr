@@ -15,9 +15,14 @@
             aria-hidden="true"
           ></i>
         </button>
+        <h2>Keeps: {{ state.keeps.length }}</h2>
       </div>
-      <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
-      {{ state.keeps.name }}
+      <div class="row">
+        <div class="col-3">
+          <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
+          {{ state.keeps.name }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +50,8 @@ export default {
       vault: computed(() => AppState.activeVault),
       user: computed(() => AppState.user),
       profile: computed(() => AppState.profile),
-      keeps: computed(() => AppState.keeps)
+      keeps: computed(() => AppState.keeps),
+      vaultKeeps: computed(() => AppState.vaultKeeps)
     })
     onMounted(() => {
       vaultsService.getVault(route.params.id)

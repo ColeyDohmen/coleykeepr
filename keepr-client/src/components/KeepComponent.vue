@@ -1,28 +1,24 @@
-<template class="bg-primary justify-content-center">
+<template class="bg-primary card p-2 my-2 mx-2 mt-2">
   <ViewKeepModal :k-prop="kProp" />
-  <div class="keepComponent bg-primary rounded">
+  <div class="keepComponent  rounded">
     <div class="justify-content-center">
-      <div class="">
-      </div>
     </div>
-    <div class="col-6 card ">
-      <div class="containera">
-        <router-link :to="{ name: 'ProfilePage', params: { id: kProp.creatorId } }" class="nav-link">
-          <i class="fa fa-user-circle bottom-right" aria-hidden="true"></i>
-        </router-link>
-        <img :src="kProp.img" alt="kpropimg" style="width:100%" />
-        <h4 class="bottom-left">
-          <div
-            class="primary button-size card-rounded m-1"
-            type="submit"
-            :id="'view-keep-' + kProp.id"
-            data-toggle="modal"
-            :data-target="'#view-keep-' + kProp.id"
-          >
-            {{ kProp.name }}
-          </div>
-        </h4>
-      </div>
+    <div class="containera my-2 mx-2">
+      <router-link :to="{ name: 'ProfilePage', params: { id: kProp.creatorId } }" class="nav-link">
+        <i class="fa fa-user-circle bottom-right" aria-hidden="true"></i>
+      </router-link>
+      <img class="rounded" :src="kProp.img" alt="kpropimg" style="width:100%" />
+      <h4 class="bottom-left">
+        <div
+          class="primary button-size card-rounded m-1"
+          type="submit"
+          :id="'view-keep-' + kProp.id"
+          data-toggle="modal"
+          :data-target="'#view-keep-' + kProp.id"
+        >
+          {{ kProp.name }}
+        </div>
+      </h4>
     </div>
   </div>
 </template>

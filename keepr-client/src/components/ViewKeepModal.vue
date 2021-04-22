@@ -34,7 +34,7 @@
               </div>
 
               <div class="col-6">
-                <img :src="kProp.img" class="img-fluid" />
+                <img :src="kProp.img" class="img-fluid rounded" />
               </div>
 
               <div class="col-12 p-1">
@@ -57,7 +57,7 @@
                     <a class="dropdown-item" href="#">Separated link</a>
                   </div>
                 </div>
-                <h5>
+                <h5 class="">
                   {{ kProp.creator.email }}
                 </h5>
                 <div v-if="state.keeps != undefined">
