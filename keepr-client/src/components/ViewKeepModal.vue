@@ -132,11 +132,11 @@ export default {
           logger.log(error)
         }
       },
-      async addKeeptoVault(vaultId) {
+      async addKeepToVault(vaultId) {
         try {
           logger.log(state.newVaultKeep)
           const vaultKeep = { vaultId: vaultId, keepId: props.kProp.id }
-          state.newVaultKeep.vaultId = props.vProp.id
+          // state.newVaultKeep.vaultId = props.vProp.id
           await keepsService.createVaultKeep(vaultKeep)
           state.newVaultKeep = {}
         } catch (error) {
