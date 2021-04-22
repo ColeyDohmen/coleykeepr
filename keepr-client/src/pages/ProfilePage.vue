@@ -1,32 +1,37 @@
 <template>
-  <div class="profilepage container-fluid text-center">
-    <div class="row-12 text-center">
-      <h3>Creator: <b>{{ state.profile.name }}</b></h3>
+  <div class="profilepage container-fluid">
+    <div class="row text-center">
       <div class="col-12">
-        <img class="rounded" :src="state.profile.picture" alt="" />
+        <img class="rounded float-left p-1" :src="state.profile.picture" alt="" />
+        <h3 class="float-left mx-2 my-5">
+          Creator: <b>{{ state.profile.name }}</b>
+        </h3>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 text-center" v-if="state.vaults != undefined">
+      <div class="col-12" v-if="state.vaults != undefined">
         <h2>Vaults: {{ state.vaults.length }}</h2>
-        <button
-          class="btn btn-outline-primary button-size card-rounded m-1"
-          type="button"
-          :id="addvault"
-          data-toggle="modal"
-          data-target="#addvault"
-          v-if="state.profile.email === state.user.email"
-        >
-          <i class="fa fa-plus btn-outline-success" aria-hidden="true"></i> Add
-          Vault
-        </button>
-        <AddVaultModal />
-        <vault-component v-for="v in state.vaults" :key="v.id" :v-prop="v" />
+        <h2>Keeps: {{ state.keeps.length }}</h2>
+        <div class="row text-center">
+          <button
+            class="btn btn-outline-primary button-size card-rounded m-1"
+            type="button"
+            :id="addvault"
+            data-toggle="modal"
+            data-target="#addvault"
+            v-if="state.profile.email === state.user.email"
+          >
+            <i class="fa fa-plus btn-outline-success" aria-hidden="true"></i> Add
+            Vault
+          </button>
+          <AddVaultModal />
+          <vault-component v-for="v in state.vaults" :key="v.id" :v-prop="v" />
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-8 mx-3 py-3" v-if="state.keeps != undefined">
-        <h2>Keeps: {{ state.keeps.length }}</h2>
+        <h2>Keeps:</h2>
         <button
           class="btn btn-outline-primary button-size card-rounded m-1"
           type="button"

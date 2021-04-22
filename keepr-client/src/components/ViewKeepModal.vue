@@ -53,25 +53,23 @@
                     </div>
                     <button class="btn dropdown-item" href="#" type="button">
                     </button>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
                   </div>
-                </div>
-                <h5 class="">
-                  {{ kProp.creator.email }}
-                </h5>
-                <div v-if="state.keeps != undefined">
-                  <button
-                    class="btn btn-danger btn-sm button p-1 mx-2"
-                    @click="deleteKeep"
-                    v-if="kProp.creator.email === state.user.email"
-                  >
-                    <i
-                      class="fa fa-minus-square pam-size text-light mt-2 mb-2"
+                  <div v-if="state.keeps != undefined">
+                    <button
+                      class="btn btn-danger btn-sm button p-1 mx-2"
+                      @click="deleteKeep"
+                      v-if="kProp.creator.email === state.user.email"
+                    >
+                      <i
+                        class="fa fa-minus-square pam-size text-light mt-2 mb-2 py-2"
 
-                      aria-hidden="true"
-                    ></i>
-                  </button>
+                        aria-hidden="true"
+                      ></i>
+                    </button>
+                  </div>
+                  <h5 class="float-right mx-2 p-2">
+                    {{ kProp.creator.email }}
+                  </h5>
                 </div>
               </div>
             </div>
