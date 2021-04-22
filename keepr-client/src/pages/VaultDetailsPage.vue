@@ -18,7 +18,7 @@
         <h2>Keeps: {{ state.keeps.length }}</h2>
       </div>
       <div class="row">
-        <div class="col-3">
+        <div class="card-columns">
           <keep-component v-for="k in state.keeps" :key="k.id" :k-prop="k" />
           {{ state.keeps.name }}
         </div>

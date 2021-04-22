@@ -1,7 +1,7 @@
 <template>
-  <div class="col-12 p-2">
-    <div class="row">
-      <div class="vaultComponent col-6 card rounded">
+  <div class="col-6 p-2">
+    <div class="">
+      <div class="vaultComponent card rounded">
         <router-link :to="{ name: 'VaultDetailsPage', params: { id: vProp.id } }" class="nav-link">
           <h5>{{ vProp.name }}</h5>
           <h5>{{ vProp.description }}</h5>

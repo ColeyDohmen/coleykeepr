@@ -24,6 +24,7 @@
             <i class="fa fa-plus btn-outline-success" aria-hidden="true"></i> Add
             Vault
           </button>
+          <div class="col-6"></div>
           <AddVaultModal />
           <vault-component v-for="v in state.vaults" :key="v.id" :v-prop="v" />
         </div>
@@ -44,8 +45,8 @@
           Keep
         </button>
         <AddKeepModal />
-        <div class="row">
-          <div class="col-4" v-for="k in state.keeps" :key="k.id">
+        <div class="card-columns">
+          <div class="" v-for="k in state.keeps" :key="k.id">
             <keep-component :k-prop="k" />
           </div>
         </div>

@@ -37,7 +37,7 @@
                 <img :src="kProp.img" class="img-fluid rounded" />
               </div>
 
-              <div class="col-12 p-1">
+              <div class="col-7 p-1">
                 <!-- <button class="btn btn-primary" @click="addToVault">
                   Add to vault
                 </button> -->
