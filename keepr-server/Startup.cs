@@ -107,6 +107,10 @@ namespace keepr_server
             {
                 endpoints.MapControllers();
             });
+
+            app.UseDefaultFiles();
+
+            app.UseStaticFiles();
         }
     }
 }
