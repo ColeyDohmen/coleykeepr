@@ -16,7 +16,8 @@ namespace keepr_server.Services
             _vrepo = vrepo;
         }
         ///<summary>
-        ///
+        ///Creates new Vault-Keep, if the vault is null it will throw an error, if you are not the original
+        /// creator, an error will be thrown.
         ///</summary>
         internal VaultKeep Create(VaultKeep newVaultKeep)
         {
@@ -33,6 +34,10 @@ namespace keepr_server.Services
             return _repo.Create(newVaultKeep);
         }
 
+        ///<summary>
+        ///Deletes Vault-Keep, checks that the vault-keep is an actual vault-keep, then it checks if the user is
+        /// the original creator of said vault-keep.
+        ///</summary>
         internal void Delete(int id, string userId)
         {
             VaultKeep keep = _repo.GetById(id);
