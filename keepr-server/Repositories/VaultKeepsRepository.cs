@@ -16,12 +16,18 @@ namespace keepr_server.Repositories
             _db = db;
         }
 
+        ///<summary>
+        ///Selects all vault-keeps then grabs the one with the id that it has been given.
+        ///</summary>
         internal VaultKeep GetById(int id)
         {
             string sql = "SELECT * FROM vaultkeeps WHERE id = @id;";
             return _db.QueryFirstOrDefault<VaultKeep>(sql, new { id });
         }
 
+        ///<summary>
+        ///Creates a new vault-keep, giving it a vault id, a keep id, and a creator id.
+        ///</summary>
         internal VaultKeep Create(VaultKeep newVaultKeep)
         {
             string sql = @"
@@ -35,6 +41,9 @@ namespace keepr_server.Repositories
             return newVaultKeep;
         }
 
+        ///<summary>
+        ///Deletes a vault-keep where the id matches the one given, limits it to one.
+        ///</summary>
         internal void Delete(int id)
         {
             string sql = "DELETE FROM vaultkeeps WHERE id = @id LIMIT 1;";
