@@ -21,6 +21,9 @@ namespace keepr_server.Controllers
             _vkserv = vkserv;
         }
 
+        ///<summary>
+        ///Makes a new vault-keep, makes sure the user is logged in and authenticated with Auth0.
+        ///</summary>
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<VaultKeep>> Post([FromBody] VaultKeep newVaultKeep)
@@ -39,6 +42,9 @@ namespace keepr_server.Controllers
             }
         }
 
+        ///<summary>
+        ///Deletes vault-keep by id, makes sure the user is logged in and authenticated with Auth0.
+        ///</summary>
         [HttpDelete("{id}")]
         [Authorize]
         public async Task<ActionResult<string>> DeleteAsync(int id)
