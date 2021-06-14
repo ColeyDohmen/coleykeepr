@@ -21,6 +21,9 @@ namespace keepr_server.Controllers
             _vserv = vserv;
         }
 
+        ///<summary>
+        ///Gets all vaults, doesn't matter if the user is logged in/authenticated.
+        ///</summary>
         [HttpGet]
         public ActionResult<IEnumerable<Vault>> Get()
         {

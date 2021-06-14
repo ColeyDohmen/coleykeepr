@@ -81,6 +81,10 @@ namespace keepr_server.Services
             return data;
         }
 
+        ///<summary>
+        ///Deletes vault by id, checks to make sure they are the creator of said vault before deleting, if not
+        ///it throws an error, if they are the creator, the vault will successfully be deleted.
+        ///</summary>
         internal string Delete(int id, string userId)
         {
             Vault original = Get(id);
