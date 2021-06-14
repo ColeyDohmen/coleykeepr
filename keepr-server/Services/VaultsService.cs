@@ -18,6 +18,9 @@ namespace keepr_server.Services
             _krepo = krepo;
         }
 
+        ///<summary>
+        ///Gets all vaults, checks to see if they are private.
+        ///</summary>
         internal IEnumerable<Vault> GetAll()
         {
             IEnumerable<Vault> vaults = _repo.GetAll();
@@ -53,11 +56,17 @@ namespace keepr_server.Services
             return _repo.Edit(editData);
         }
 
+        ///<summary>
+        /// Get vaults by creator id.
+        ///</summary>
         internal IEnumerable<Vault> GetVaultsByAccountId(string id)
         {
             return _repo.GetByCreatorId(id);
         }
 
+        ///<summary>
+        ///Gets vaults by id, checks if it is a real vault, also checks if the vault is private or not.
+        ///</summary>
         private Vault Get(int id)
         {
             var data = _repo.GetById(id);
