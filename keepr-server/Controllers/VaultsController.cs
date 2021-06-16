@@ -38,6 +38,10 @@ namespace keepr_server.Controllers
             }
         }
 
+
+        ///<summary>
+        ///Gets vault by id, user does not have to be logged in/authenticated for this action to occur.
+        ///</summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Vault>>> GetAsync(int id)
         {
@@ -53,6 +57,9 @@ namespace keepr_server.Controllers
             }
         }
 
+        ///<summary>
+        ///Creates vault, takes the body from the user, user must be logged in/authenticated if they want to create a vault.
+        ///</summary>
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Vault>> Post([FromBody] Vault newVault)
